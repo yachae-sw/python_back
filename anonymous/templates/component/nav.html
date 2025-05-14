@@ -1,0 +1,15 @@
+<div class="row text-center border-bottom py-2 align-items-center mx-0" style="width: 100%">
+    <div class="col">
+        <a class="fs-1 text-decoration-none text-secondary" style="font-weight: bold"
+            href="{% url 'board' %}">Anonymous</a>
+    </div>
+    <div class="col">
+        {% if request.user.is_authenticated %}
+        <p class="m-0">{{ request.user.nickname }}</p>
+        <a class="fs-5 text-decoration-none" style="color: #C60000;font-weight: bold" >글쓰기</a>
+        <a class="fs-5 text-decoration-none" style="color: black;font-weight: bold" href="{% url 'signout' %}">로그아웃</a>
+        {% else %}
+        <a class="fs-5 text-decoration-none" style="color: black;font-weight: bold" href="{% url 'signin' %}">로그인</a>
+        {% endif %}
+    </div>
+</div>
