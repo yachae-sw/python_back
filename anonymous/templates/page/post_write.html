@@ -1,0 +1,40 @@
+{% extends "common/base.html" %} {% block content %}
+<div class="card">
+  <div class="card=body text-end">
+    <form method="post" enctype="multipart/form-data" id="write_form">
+        {% csrf_token %}
+        <input class="form-control my-2" type="text" name="title" placeholder="제목" id="title">
+        <textarea 
+        id="content"
+        style="height: 150px;resize: none;"
+        class="form-control my-2" 
+        name="content" 
+        placeholder="한번 작성한 글은 삭제할 수 없습니다. 악플은 불가합니다."></textarea>
+        
+        <input class="form-control" type="file" name="img" accept="*/image">
+
+        <a class="fs-5 text-decoration-none my-2" id="write_btn" 
+        style="color: black;font-weight: bold">글작성</a>
+    </form>
+  </div>
+</div>
+
+<script>
+    let title = document.getElementById("title");
+    let content = document.getElementById("content");
+    let write_btn = document.getElementById("write_btn");
+    let write_form = document.getElementById("write_form");
+
+
+    write_btn.addEventListener("click",()=>{
+        if(title.value == "" || content.value == ""){
+            alert("내용을 작성해 주세요.")
+        }else{
+            write_form.submit();
+        }
+    })
+</script>
+
+
+{% endblock %}
+
